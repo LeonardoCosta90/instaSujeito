@@ -4,7 +4,7 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,
+  SafeAreaView ,
   Image,
   TouchableOpacity,
   FlatList
@@ -70,9 +70,9 @@ class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
       
-      <View style={styles.header}>
+      <SafeAreaView style={styles.header}>
         <TouchableOpacity>
           <Image
           source={require('./src/img/logo.png')}
@@ -86,7 +86,7 @@ class App extends Component {
           style={styles.send}
           />
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
 
       <FlatList
       showsHorizontalScrollIndicator={false}
@@ -94,7 +94,7 @@ class App extends Component {
       renderItem={ ({item}) => <Lista data={item} /> }
       />
 
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -103,6 +103,7 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === 'android' ? 25 : 0
   },
   header:{
     height: 55,
